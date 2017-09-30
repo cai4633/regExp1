@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正则表达式测试手机号码</title>
+	<meta charset="utf-8"/>
+	<style type="text/css">
+	div{
+		display: inline-block;
+	}
+	#submit{
+			float: right;
+		}
+	</style>
+	<script type="text/javascript" src="jquery1.9.1.js"></script>
+	<script type="text/javascript">
+			$().ready(function(){
+				$("#submit").click(verifyTele);
+
+// verifyTele()验证一串数字是否是电话号码
+				function verifyTele(){
+					// console.log($("textarea").val())
+					if($("textarea").val().search(/(13[0-9]|147|15[0-35689]|17[3786]|18[0-69])\d{8}?/g)===-1){
+						alert("这里面不包含电话号码")
+					}else{
+						alert("这里面包含一个电话号码")
+					}
+				}
+			})
+	</script>
+</head>
+<body>
+<div>
+	<textarea cols="50" placeholder="请输入文本"></textarea>
+	<br/>
+	<input type="button" name="" id="submit" value="确认" title="点击后判断是否是电话号码" />
+</div>
+</body>
+</html>
