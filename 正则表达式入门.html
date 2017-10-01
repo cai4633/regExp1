@@ -16,6 +16,13 @@
 			$().ready(function(){
 				$("#submit").click(verifyTele);
 
+// 添加快捷键shift+enter，点击shift+enter时也会判断文本里面是否包含手机号码；
+		        $("body").keydown(function(e){
+		        	if(e.keyCode===13&&e.shiftKey===true){
+		        		e.preventDefault();//阻止默认行为只是暂时的；只是在这个事件下成立；
+		        		verifyTele();
+		        	}
+		        });
 // verifyTele()验证一串数字是否是电话号码
 				function verifyTele(){
 					// console.log($("textarea").val())
@@ -23,6 +30,12 @@
 						alert("这里面不包含电话号码")
 					}else{
 						alert("这里面包含一个电话号码")
+					}
+
+					if($("textarea").val().search(/(\b[\u4e00-\u9fa5]+)\s+\1/g)===-1){
+						alert("这里面不包含相邻的相同的单词")
+					}else{
+						alert("这里面包含相邻的相同的单词")
 					}
 				}
 			})
